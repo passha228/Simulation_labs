@@ -14,23 +14,24 @@ def sensorBase():
 def KolmagorovSmirnov():
     # критическое значение, из таблицы (alpha = 0.1)
     k_alpha = 1.22 
+    count = 1000
 
-    count = 30
-
-    # количество элементов, меньших i-го
-    elemLess_i = np.array([i for i in range(count)]) 
-
-    empirFunc = elemLess_i / count
+    empirFunc = np.array([i / count for i in range(count)])
+    empirFunc1 = np.array([(i + 1) / count for i in range(count)])
+    
     theoreticalFunc = np.array([sensorBase() for i in range(count)])
     theoreticalFunc.sort()
+    
     D = max(abs(empirFunc - theoreticalFunc))
+    D1 = max(abs(empirFunc1 - theoreticalFunc))
+    D = max(D, D1)
 
     k = np.sqrt(count) * D
     
     print("Эмпирическая функция и теоретическая: ")
-    print(empirFunc, theoreticalFunc, sep='\n', end = '\n\n')
+    print(empirFunc, empirFunc1, theoreticalFunc, sep='\n', end = '\n\n')
     print(f"k = {k}")
-
+    
     if (k > k_alpha):
         print(Fore.RED + "Эмперические данные противоречат теоретическому закону распределения")
     else:
@@ -39,6 +40,7 @@ def KolmagorovSmirnov():
     y = np.array([i / count for i in range(count)])
     plt.plot(theoreticalFunc, y, color = 'b')
     plt.plot(empirFunc, y, color = 'g')
+    plt.plot(empirFunc1, y, color = 'g')
     plt.show()
 
 KolmagorovSmirnov()
