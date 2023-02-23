@@ -1,0 +1,1 @@
+NAME = 'sensor_base'

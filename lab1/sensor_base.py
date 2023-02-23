@@ -42,5 +42,3 @@ def KolmagorovSmirnov():
     plt.plot(empirFunc, y, color = 'g')
     plt.plot(empirFunc1, y, color = 'g')
     plt.show()
-
-KolmagorovSmirnov()
