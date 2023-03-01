@@ -14,7 +14,7 @@ def sensorBase():
 def KolmagorovSmirnov():
     # критическое значение, из таблицы (alpha = 0.1)
     k_alpha = 1.22 
-    count = 1000
+    count = 10000
 
     empirFunc = np.array([i / count for i in range(count)])
     empirFunc1 = np.array([(i + 1) / count for i in range(count)])

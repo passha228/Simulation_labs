@@ -1,6 +1,6 @@
 import numpy as np
 from lab1.sensor_base import sensorBase
-N = 100000
+N = 1000
 
 def SensorDiscr(p : np.ndarray) -> int:
     if sum(p) > 1:
@@ -40,7 +40,8 @@ def Win(states: dict) -> str:
 
 def Game() -> None:
     choises = ['камень', 'ножницы', 'бумага', 'колодец']
-    bluePlayerProbability = np.array([1/3, 1/6, 1/6, 1/3])
+    bluePlayerProbability = np.array([0, 0, 1/2, 1/2])
+    #bluePlayerProbability = np.array([1/4, 1/4, 1/4, 1/4])
     redPlayerProbability = np.array([1/4, 1/4, 1/4, 1/4])
     blueStaffCount = {
         'камень' : 0,
@@ -92,8 +93,22 @@ def Game() -> None:
     print(f"Количество выигрышей первого игрока: {countOfWin['blue']}")
     print(f"Количество выигрышей второго игрока: {countOfWin['red']}")
     print(f'Количествно партий сыгранных в ничью: {countOfWin["draw"]}')
-    print(f"Выигрыш первого игрока: {playersValue['blue']}")
-    print(f"Выигрыш второго игрока: {playersValue['red']}")
+    # print(f"Выигрыш первого игрока: {playersValue['blue']}")
+    # print(f"Выигрыш второго игрока: {playersValue['red']}")
+    print(f"Средний выигрыш первого игрока: {playersValue['blue'] / N}")
+    print(f"Средний выигрыш второго игрока: {playersValue['red'] / N}")
     #print(f"Все партии:\n {games}")
     print(f"Все выборы первого игрока: {blueStaffCount}")
     print(f"Все выборы воторого игрока: {redStaffCount}")
+
+def CheckSensor():
+    arr = np.array([1/4,1/4,1/4,1/4])
+    res = []
+    for i in range(N):
+        res.append(SensorDiscr(arr))
+    
+    print(f"count 0 -> {res.count(0)}")
+    print(f"count 1 -> {res.count(1)}")
+    print(f"count 2 -> {res.count(2)}")
+    print(f"count 3 -> {res.count(3)}")
+    print(f"count 4 -> {res.count(4)}")
