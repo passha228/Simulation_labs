@@ -40,7 +40,7 @@ def Win(states: dict) -> str:
 
 def Game() -> None:
     choises = ['камень', 'ножницы', 'бумага', 'колодец']
-    bluePlayerProbability = np.array([0, 0, 1/2, 1/2])
+    bluePlayerProbability = np.array([1/4, 1/4, 1/4, 1/4])
     #bluePlayerProbability = np.array([1/4, 1/4, 1/4, 1/4])
     redPlayerProbability = np.array([1/4, 1/4, 1/4, 1/4])
     blueStaffCount = {
@@ -100,15 +100,3 @@ def Game() -> None:
     #print(f"Все партии:\n {games}")
     print(f"Все выборы первого игрока: {blueStaffCount}")
     print(f"Все выборы воторого игрока: {redStaffCount}")
-
-def CheckSensor():
-    arr = np.array([1/4,1/4,1/4,1/4])
-    res = []
-    for i in range(N):
-        res.append(SensorDiscr(arr))
-    
-    print(f"count 0 -> {res.count(0)}")
-    print(f"count 1 -> {res.count(1)}")
-    print(f"count 2 -> {res.count(2)}")
-    print(f"count 3 -> {res.count(3)}")
-    print(f"count 4 -> {res.count(4)}")
