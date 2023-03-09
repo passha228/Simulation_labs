@@ -6,7 +6,7 @@ from colorama import init, Fore
 init(autoreset=True)
 
 # Функция базового сенсора, которая работает только в диапазоне (0, 1)
-def sensorBase():
+def SensorBase():
     while(a := random()) == 0:
         pass
     return a

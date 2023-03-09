@@ -1,12 +1,12 @@
 import numpy as np
-from lab1.sensor_base import sensorBase
+from lab1.sensor_base import SensorBase
 N = 1000
 
 def SensorDiscr(p : np.ndarray) -> int:
     if sum(p) > 1:
         raise ValueError("Сумма вероятностей больше 1")
 
-    rand, s, res = sensorBase(), 0, -1
+    rand, s, res = SensorBase(), 0, -1
     
     while s < rand:
         res += 1
